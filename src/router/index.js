@@ -63,7 +63,7 @@ const routes = [
 
 // Create the router
 const router = createRouter({
-  history: createWebHistory('/wis2box-webapp/'),
+  history: createWebHistory('/'),
   routes,
 })
 
