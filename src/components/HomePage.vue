@@ -34,11 +34,13 @@ if (window.location.href.startsWith(baseUrl)) {
     console.log(window.location.href);
     console.log(baseUrl);
     // If it does not show the error message
-    errorMessage.value = `Please access the web application via the base URL, redirecting.`;
+    errorMessage.value = `Please access the web application via the base URL.`;
     console.error(errorMessage.value);
-    setTimeout(function() {
-        window.location.href = baseUrl;
-    }, 3000);
+    if (import.meta.env.VITE_FORCE_REDIRECT != 'false') {
+        setTimeout(function() {
+            window.location.href = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+        }, 100);
+    }
 }
 
 </script>
